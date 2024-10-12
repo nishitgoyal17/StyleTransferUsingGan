@@ -107,11 +107,11 @@ Apply the gradients to the optimizer — Adam optimizer as defined in the origin
 
 Below is the animated picture of the training process. The Predicted image is plotted after every epoch. (Plotted only few images for brevity)
 
-<!-- ![animated_cycleGAN_90_epochs](https://user-images.githubusercontent.com/70571620/157236496-8ae54194-e645-469f-aff6-e6d5d4a208c3.gif) -->
+<!-- ![animated_cycleGAN_90_epochs](https://github.com/nishitgoyal17/gan-mri/blob/main/DSC43_animated_cycleGAN_100_epochs.gif) -->
 
 
 ## Result of MRI Style Transfer Using GAN (T1 to T2 <-> T2 to T1)
-![MRI_Style_Transfer_cycleGAN_100_epochs](https://github.com/GURPREETKAURJETHRA/MRI-STYLE-TRANSFER-USING-GAN/blob/462911bd9c0e25f20d384f9225f81e2cec3fa4ec/DSC43_animated_cycleGAN_100_epochs.gif)
+![MRI_Style_Transfer_cycleGAN_100_epochs](https://github.com/nishitgoyal17/gan-mri/blob/main/DSC43_animated_cycleGAN_100_epochs.gif)
 
 
 ***@All Rights Reserved*** [**Nishit Goyal**]((https://github.com/nits-gyl-dataworld))
