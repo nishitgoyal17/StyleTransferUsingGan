@@ -67,7 +67,7 @@ U-Net is able to localize and distinguish borders by classifying on every pixel,
 Here, Generator generates synthetic images(T1 to T2 and vice versa) using given random normal initializer
 
 To summarize the U-net generator the input image (256 x 256 x 1) is increased to (1 x 1 x 512) and brought back to (256 x 256 x 1) using encoder [which learns the image irrespective of its loaction] and decoder [details are captured here] using skip connections to get precise locations, feature maps from corresponding encoder level is concatenated with output of transposed convolutional layers
-![unet_generator_model](https://user-images.githubusercontent.com/70571620/157240860-7aaf5572-82f3-4f6e-8088-5e42e31d3db9.png)
+![unet_generator_model](https://github.com/nishitgoyal17/gan-mri/blob/main/images/img1.png)
 
 
 
@@ -75,7 +75,7 @@ To summarize the U-net generator the input image (256 x 256 x 1) is increased to
 Discriminator is a traditional CNN, which we use to classify the Images. It only uses Downsampling hence. Discriminator shall classify a portion of the image generated from the generator (input image) as fake or real
 
 Discriminator uses an image patch [patchGAN model] of (30 x 30 x 1) from the generator to verify the synthetic image as real or fake
-![discriminator_model](https://user-images.githubusercontent.com/70571620/157241052-39aeb739-f2b6-4552-a2b5-1e38a6737e11.png)
+![discriminator_model](https://github.com/nishitgoyal17/gan-mri/blob/main/images/img2.png)
 
 ### Loss Functions
 Binary Cross Entropy loss function is used in this example.
