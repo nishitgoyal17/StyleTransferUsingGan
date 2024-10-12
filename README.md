@@ -116,4 +116,4 @@ Below is the animated picture of the training process. The Predicted image is pl
 ### Acknowledgement:
 This Project Assignment was part of Curriculum during **EPGP-DataScience AI-ML (Deep Learning Spec) from IIIT-B.**
 
-***@All Rights Reserved*** [**Gurpreet Kaur Jethra**](https://github.com/GURPREETKAURJETHRA)
+***@All Rights Reserved*** [**Nishit Goyal**]((https://github.com/nits-gyl-dataworld))
