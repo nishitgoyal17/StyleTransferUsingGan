@@ -2,18 +2,21 @@
 To build a Generative adversarial model(modified U-Net) which can generate artificial MRI images of different contrast levels from existing MRI scans.
 
 ## Data understanding:
-The data used here (`MRI+T1_T2+Dataset.RAR`) containing both T1 and T2 MRI images in RGB format of base size (217 x 181). Given images should be preprocessed for further analysis. 
 
-The T1 and T2 MRI Images included in the dataset are not related in any way since we have an unpaired dataset here. Hence we would be using cycleGAN in this problem
+The dataset used for this task (`MRI+T1_T2+Dataset.RAR`) contains T1 and T2 MRI images in RGB format with a base size of 217 x 181 pixels. To ensure reliable results, the images need to be preprocessed before further analysis.
+
+Since the T1 and T2 images in the dataset are unpaired (i.e., they don’t correspond to the same anatomical regions or patients), we will employ a CycleGAN model. CycleGAN is well-suited for this type of problem as it allows for image-to-image translation even without paired datasets.
+
+The model will learn to generate T2-weighted images from T1-weighted images and vice-versa, enhancing the dataset’s diagnostic potential by creating synthetic contrast variations from the given scans.
 
 ## Project Description:
-- Misdiagnosis in medical field is a very serious issue having adverse implications on the patient. With skilled radiologists overwhelmed by volume of work, there is critical need for Artifical Intelligence to assist them in taking the right decisions.
+-Misdiagnosis in healthcare is a significant concern with serious consequences for patients. As radiologists face increasing workloads, there is an urgent need for Artificial Intelligence to support them in making accurate and timely decisions.
 
 - Magnetic Resonance Imaging (MRI) is a key imaging technology which offers superb soft tissue contrast with different contrast mechanisms such as T1 weighted and T2 weighted. A radiologist often needs multi contrast images to arrive at the right decision but is often cost prohibitive.
 
-- But to have access to different imaging is difficult and expensive. With the help of deep learning, we can use style transfer to generate artificial MRI images of different contrast levels from existing MRI scans. This will help to provide a better diagnosis with the help of an additional image.
+- Magnetic Resonance Imaging (MRI) is a vital medical imaging technique that provides excellent soft tissue contrast through various mechanisms, such as T1-weighted and T2-weighted scans. However, radiologists often require multiple contrast images for accurate diagnosis, which can be challenging and expensive to obtain.
 
-- Using CycleGAN to translate the style of one MRI image to another, which will help in a better understanding of the scanned image. Using GANs you will create T2 weighted images from T1 weighted MRI image and vice-versa.
+- CycleGAN can be utilized to translate the style of one MRI image into another, enhancing the interpretation of scanned images. This approach allows the generation of T2-weighted images from T1-weighted scans and vice versa, providing additional perspectives for more accurate diagnosis.
 
 ## Project Pipeline:
 In this notebook, we will create T2 weighted images from T1 weighted MRI image and vice-versa.
@@ -67,7 +70,7 @@ U-Net is able to localize and distinguish borders by classifying on every pixel,
 Here, Generator generates synthetic images(T1 to T2 and vice versa) using given random normal initializer
 
 To summarize the U-net generator the input image (256 x 256 x 1) is increased to (1 x 1 x 512) and brought back to (256 x 256 x 1) using encoder [which learns the image irrespective of its loaction] and decoder [details are captured here] using skip connections to get precise locations, feature maps from corresponding encoder level is concatenated with output of transposed convolutional layers
-![unet_generator_model](https://user-images.githubusercontent.com/70571620/157240860-7aaf5572-82f3-4f6e-8088-5e42e31d3db9.png)
+![unet_generator_model](https://github.com/nishitgoyal17/gan-mri/blob/main/images/img1.png)
 
 
 
@@ -75,7 +78,7 @@ To summarize the U-net generator the input image (256 x 256 x 1) is increased to
 Discriminator is a traditional CNN, which we use to classify the Images. It only uses Downsampling hence. Discriminator shall classify a portion of the image generated from the generator (input image) as fake or real
 
 Discriminator uses an image patch [patchGAN model] of (30 x 30 x 1) from the generator to verify the synthetic image as real or fake
-![discriminator_model](https://user-images.githubusercontent.com/70571620/157241052-39aeb739-f2b6-4552-a2b5-1e38a6737e11.png)
+![discriminator_model](https://github.com/nishitgoyal17/gan-mri/blob/main/images/img2.png)
 
 ### Loss Functions
 Binary Cross Entropy loss function is used in this example.
@@ -107,13 +110,11 @@ Apply the gradients to the optimizer — Adam optimizer as defined in the origin
 
 Below is the animated picture of the training process. The Predicted image is plotted after every epoch. (Plotted only few images for brevity)
 
-<!-- ![animated_cycleGAN_90_epochs](https://user-images.githubusercontent.com/70571620/157236496-8ae54194-e645-469f-aff6-e6d5d4a208c3.gif) -->
+<!-- ![animated_cycleGAN_90_epochs](https://github.com/nishitgoyal17/gan-mri/blob/main/DSC43_animated_cycleGAN_100_epochs.gif) -->
 
 
 ## Result of MRI Style Transfer Using GAN (T1 to T2 <-> T2 to T1)
-![MRI_Style_Transfer_cycleGAN_100_epochs](https://github.com/GURPREETKAURJETHRA/MRI-STYLE-TRANSFER-USING-GAN/blob/462911bd9c0e25f20d384f9225f81e2cec3fa4ec/DSC43_animated_cycleGAN_100_epochs.gif)
+![MRI_Style_Transfer_cycleGAN_100_epochs](https://github.com/nishitgoyal17/gan-mri/blob/main/DSC43_animated_cycleGAN_100_epochs.gif)
 
-### Acknowledgement:
-This Project Assignment was part of Curriculum during **EPGP-DataScience AI-ML (Deep Learning Spec) from IIIT-B.**
 
-***@All Rights Reserved*** [**Gurpreet Kaur Jethra**](https://github.com/GURPREETKAURJETHRA)
+***@All Rights Reserved*** [**Nishit Goyal**]((https://github.com/nits-gyl-dataworld))
